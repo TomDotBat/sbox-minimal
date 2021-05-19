@@ -55,6 +55,16 @@ namespace MinimalExample
 
 			player.Respawn();
 		}
+
+		/// <summary>
+		/// A client has left the server. Remove their pawn
+		/// </summary>
+		public override void ClientJoined( Client client, NetworkDisconnectionReason reason )
+		{
+			client?.Pawn?.Delete();
+
+			base.ClientDisconnect(client, reason);
+		}
 	}
 
 }
